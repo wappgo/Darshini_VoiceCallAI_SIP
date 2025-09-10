@@ -97,7 +97,7 @@ GROQ_API_KEY="your_groq_api_key_here"
 TWILIO_ACCOUNT_SID="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 TWILIO_AUTH_TOKEN="your_auth_token_from_twilio"
 
-# Your Phone Numbers (MUST be in E.164 format: +[country code][number])
+# Your Phone Numbers 
 TWILIO_PHONE_NUMBER="+15551234567"
 MY_PHONE_NUMBER="+919876543210"
 
