@@ -63,63 +63,63 @@ The application operates on a stateless, webhook-based model orchestrated by Twi
 
 ### 1. Clone the Repository
 
+# Twilio + LiveKit AI Assistant Setup
+
 ```bash
+# 1. Clone the Repository
 git clone <your-repository-url>
 cd <your-repository-directory>
-2. Create a Virtual Environment
-code
-Bash
+
+# 2. Create a Virtual Environment
 python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-3. Install Dependencies
-Create a requirements.txt file with the following content:
-code
-Txt
-fastapi
+# Activate the virtual environment
+# On macOS / Linux:
+source venv/bin/activate
+# On Windows:
+# .\venv\Scripts\activate
+
+# 3. Install Dependencies
+# Create a requirements.txt file with the following content:
+echo "fastapi
 uvicorn[standard]
 python-dotenv
 twilio
 livekit-agents
 livekit-plugins-groq
-python-multipart
-Then run:
-code
-Bash
+python-multipart" > requirements.txt
+
+# Install all dependencies
 pip install -r requirements.txt
-4. Configure Environment Variables
-Create a file named .env in the root of the project and add the following credentials:
-code
-Env
-# Groq API Key
-GROQ_API_KEY="your_groq_api_key_here"
+
+# 4. Configure Environment Variables
+# Create a .env file in the root directory:
+echo "# Groq API Key
+GROQ_API_KEY=\"your_groq_api_key_here\"
 
 # Twilio Credentials
-TWILIO_ACCOUNT_SID="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-TWILIO_AUTH_TOKEN="your_auth_token_from_twilio"
+TWILIO_ACCOUNT_SID=\"ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"
+TWILIO_AUTH_TOKEN=\"your_auth_token_from_twilio\"
 
-# Your Phone Numbers 
-TWILIO_PHONE_NUMBER="+15551234567"
-MY_PHONE_NUMBER="+919876543210"
+# Your Phone Numbers
+TWILIO_PHONE_NUMBER=\"+15551234567\"
+MY_PHONE_NUMBER=\"+919876543210\"
 
 # This will be your public ngrok URL
-BASE_URL="https://something.ngrok-free.app"
-5. Update the Knowledge Base
-Edit the knowledge_base.txt file to update or add any information you want the AI assistant to know. The system will automatically load this file on startup.
-Running the Application
-Start ngrok: In a separate terminal, expose your local port 8000 to the internet.
-code
-Bash
+BASE_URL=\"https://something.ngrok-free.app\"" > .env
+
+# 5. Update the Knowledge Base
+# Edit knowledge_base.txt to add information for the AI assistant.
+
+# 6. Running the Application
+
+# Step 6a: Start ngrok to expose local port 8000
 ngrok http 8000
-ngrok will provide a public HTTPS URL (e.g., https://random-string.ngrok-free.app).
-Update .env: Copy the ngrok URL and paste it as the BASE_URL value in your .env file. Save the file.
-Start the FastAPI Server: In your main terminal (with the virtual environment activated), run the application.
-code
-Bash
+# Copy the HTTPS URL from ngrok and update BASE_URL in .env
+
+# Step 6b: Start the FastAPI Server
 uvicorn twilio_app:app --host 0.0.0.0 --port 8000
-The server is now running and accessible via the ngrok URL.
-Trigger a Test Call: Open your web browser and navigate to the following URL:
-code
-Code
+
+# Step 6c: Trigger a Test Call
+# Open your browser:
 http://localhost:8000/make-call
-This will trigger an outbound call from your Twilio number to the MY_PHONE_NUMBER you configured.
-Talk to Darshini: Answer the call and start your conversation with the AI assistant in Hindi!
+# Answer the call and start your conversation with the AI assistant in Hindi!
